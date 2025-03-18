@@ -37,7 +37,7 @@ workflow {
     CALCULATE_SEQUENCE_LENGTH(UMI_TOOLS_EXTRACT.out.sequence)
 
     // Reverse-complement the sequence if option is enabled
-     if (params.single_end) {
+     if (params.reverse_complement) {
         REVERSE_COMPLEMENT(CALCULATE_SEQUENCE_LENGTH.out.sequence)
      }
 
