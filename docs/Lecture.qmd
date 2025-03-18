@@ -1,0 +1,75 @@
+---
+title: "<span style='font-size: 0.8em; color: #3ac486;'>Nextflow in Action: Design and Implement Your Own Bioinformatics Workflows</span>"
+author:
+  - name: "Ira Iosub, PhD"
+    affiliation: "Francis Crick Institute/KCL"
+  - name: "Charlotte Capitanchik, PhD"
+    affiliation: "Francis Crick Institute/KCL"
+date: "March 31, 2025"
+format: 
+  revealjs:
+    theme: dark
+    include-in-header:
+      text: |
+        <style>
+        .reveal {
+          font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        }
+        .reveal h1, 
+        .reveal h2, 
+        .reveal h3, 
+        .reveal h4, 
+        .reveal h5, 
+        .reveal h6 {
+          font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        }
+        .figure-caption, 
+        figcaption, 
+        .caption, 
+        .figure p {
+          font-size: 0.5em !important;
+        }
+        .reveal .title {
+          margin-bottom: 1em;
+        }
+        </style>
+editor: visual
+---
+
+A pipeline or workflow connects multiple programs together to analyse data.
+
+::: {.figure .center}
+![Wratten,Wilm & Goeke (2021), *Nature Methods*](Lecture_files/imgs/fig1_goeke_workflow_Review.png){width=75%}
+:::
+
+---
+
+## Why Nextflow?
+:::: {.columns}
+::: {.column width="40%"}
+-   <span style='color: #3ac486;'>nf-core</span> community project:
+    - 127 pipelines
+    - 1443 modules
+    - Slack workspace with 11,642 members
+- Seqera AI, Seqera platform and other tooling
+:::
+
+::: {.column width="60%"}
+![Organisations using nf-core as of March 2025](Lecture_files/imgs/nfcore_map.png){width=100%}
+:::
+::::
+
+
+## When to write a Nextflow pipeline?
+
+Writing Nextflow is a time investment, how much effort you put into writing your workflow will depend on your needs...
+
+## Common headaches!
+
+- Config hierarchies
+- Channel types
+
+## Important resources
+
+- Config hierarchies
+- Channel types
