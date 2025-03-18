@@ -1,5 +1,5 @@
-sample,fastq,org
-human_1,,human
-human_2,,human
-mouse_1,,mouse
-mouse_2,,mouse
+sample,org,fastq
+human_1,human,
+human_2,human,
+mouse_1,mouse,
+mouse_2,mouse,

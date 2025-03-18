@@ -22,8 +22,8 @@ workflow {
             .fromPath( params.input )
             .splitCsv(header:true)
             .map { row ->
-                def meta = [id: row.sample, species: row.org]
-                def fastq = file(row.fastq, checkIfExists: true)
+                def meta = [id: row.sample, org: row.org]
+                def reads = file(row.fastq, checkIfExists: true)
                 [meta, reads]
         }
 
@@ -45,19 +45,6 @@ workflow {
     SUMMARISE_GC_CONTENT(CALCULATE_SEQUENCE_LENGTH.out.sequence)
 
     // NEEDS UPDATING Run MultiQC
-//     ch_multiqc_files = FASTQC.out.html.collect()
-//     ch_multiqc_config = Channel.empty()
-//     ch_multiqc_custom_config = Channel.empty()
-//     ch_multiqc_logo = Channel.empty()
-
-//     MULTIQC (
-//     ch_multiqc_files,
-//     ch_multiqc_config,
-//     ch_multiqc_custom_config,
-//     ch_multiqc_logo,
-//     [],  // empty list for replace_names
-//     []   // empty list for sample_names
-// )
 
     // Collect FastQC outputs
     ch_multiqc_files = FASTQC.out.html.collect()
