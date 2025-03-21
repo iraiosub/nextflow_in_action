@@ -2,22 +2,30 @@
 
 nextflow.enable.dsl = 2
 
-// Import modules: nf-core
+//
+// Import modules
+//
 include { FASTQC } from './modules/nf-core/fastqc'
 include { MULTIQC } from './modules/nf-core/multiqc'
-
-// Import modules: local
 include { EXTRACT_SEQUENCE } from './modules/local/extract_sequence'
+include { SEQUENCE_LENGTH } from './modules/local/sequence_length'
+include { REVERSE_COMPLEMENT } from './modules/local/reverse_complement'
+include { MEAN_GC_CONTENT } from './modules/local/mean_gc_content'
 
-
+//
 // Define inputs and other parameters (these can also be provided in the nextflow.config file)
-params.input = "samplesheet.csv"
+//
+params.input = file("$projectDir/samplesheet.csv", checkIfExists: true)
 params.reverse_complement = false
 params.outdir = "results"
 
+//
 // Define the main workflow
+//
 workflow {
-    // Create channel for input reads
+    //
+    // Create channel from input file provided through params.input
+    //
     read_ch = Channel
             .fromPath( params.input )
             .splitCsv(header:true)
@@ -27,29 +35,50 @@ workflow {
                 [meta, reads]
         }
 
+    //
+    // Create channel for collecting files for MultiQC
+    //
+    ch_multiqc_files = Channel.empty()
+
+    //
     // Extract sequences from FASTQ files
+    //
     EXTRACT_SEQUENCE(read_ch)
 
+    //
     // Run FastQC on raw reads
+    //
     FASTQC(read_ch)
 
+    //
     // Get sequence lengths for each FASTQ file
-    CALCULATE_SEQUENCE_LENGTH(UMI_TOOLS_EXTRACT.out.sequence)
+    //
+    SEQUENCE_LENGTH(EXTRACT_SEQUENCE.out.sequence)
 
+    //
     // Reverse-complement the sequence if option is enabled
+    //
      if (params.reverse_complement) {
-        REVERSE_COMPLEMENT(CALCULATE_SEQUENCE_LENGTH.out.sequence)
+        REVERSE_COMPLEMENT(EXTRACT_SEQUENCE.out.sequence)
      }
 
-    // NEEDS UPDATING Get sequence GC content for each species, using all sequences (from all files) grouped by org
-    SUMMARISE_GC_CONTENT(CALCULATE_SEQUENCE_LENGTH.out.sequence)
+    //
+    // Get sequence GC content for each species, using all sequences (from all files) TODO:grouped by org
+    //
+    MEAN_GC_CONTENT(EXTRACT_SEQUENCE.out.sequence)
 
-    // NEEDS UPDATING Run MultiQC
+    //
+    // Prepare input channel for MultiQC
+    //
+    ch_multiqc_files = FASTQC.out.zip.join(MEAN_GC_CONTENT.out.mean_gc_content)
+                .map { [it[1], it[2]] }
+                .collect()
 
-    // Collect FastQC outputs
-    ch_multiqc_files = FASTQC.out.html.collect()
+    ch_multiqc_files.view { println "MultiQC input: $it" }
 
+    //
     // Call MultiQC with minimal inputs
+    //
     MULTIQC (
         ch_multiqc_files,  // This cannot be an empty list
         [],  // multiqc_config

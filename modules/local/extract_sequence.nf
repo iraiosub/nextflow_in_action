@@ -5,12 +5,12 @@ process EXTRACT_SEQUENCE {
     tuple val(meta), path(reads)
 
     output:
-    tuple val(meta), path("*.txt"), emit: sequence
+    tuple val(meta), path("*.tsv"), emit: sequence
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    extract_sequence.sh ${reads} ${prefix}.sequence.txt
+    extract_sequence.sh ${reads} ${prefix}.sequence.tsv
 
     """
 }
