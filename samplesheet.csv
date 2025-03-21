@@ -1,5 +1,5 @@
 sample,org,fastq
-human_1,human,
-human_2,human,
-mouse_1,mouse,
-mouse_2,mouse,
+human_1,human,human_1.fastq
+human_2,human,human_2.fastq
+mouse_1,mouse,mouse_1.fastq
+mouse_2,mouse,mouse_2.fastq

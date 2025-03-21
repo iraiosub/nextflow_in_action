@@ -27,11 +27,11 @@ workflow {
                 [meta, reads]
         }
 
-    // Run FastQC on raw reads
-    FASTQC(read_ch)
-
     // Extract sequences from FASTQ files
     EXTRACT_SEQUENCE(read_ch)
+
+    // Run FastQC on raw reads
+    FASTQC(read_ch)
 
     // Get sequence lengths for each FASTQ file
     CALCULATE_SEQUENCE_LENGTH(UMI_TOOLS_EXTRACT.out.sequence)
