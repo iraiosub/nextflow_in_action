@@ -1,16 +1,14 @@
 process MEAN_GC_CONTENT {
-    tag "$meta.id"
+    tag "$group_key"
 
     input:
-    tuple val(meta), path(sequences)
+    tuple val(group_key), val(group_type), path(sequences)
 
     output:
-    tuple val(meta), path("*.tsv"), emit: mean_gc_content
+    tuple val(group_key), val(group_type), path("*.tsv"), emit: mean_gc_content
 
     script:
-    def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    mean_gc_content.sh ${prefix} ${sequences} > ${prefix}.mean_gc_content.tsv
-
+    mean_gc_content.sh ${group_key} ${sequences} > ${group_key}.mean_gc_content.tsv
     """
 }

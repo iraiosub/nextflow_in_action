@@ -10,7 +10,8 @@ include { MULTIQC } from './modules/nf-core/multiqc'
 include { EXTRACT_SEQUENCE } from './modules/local/extract_sequence'
 include { SEQUENCE_LENGTH } from './modules/local/sequence_length'
 include { REVERSE_COMPLEMENT } from './modules/local/reverse_complement'
-include { MEAN_GC_CONTENT } from './modules/local/mean_gc_content'
+include { MEAN_GC_CONTENT as MEAN_GC_CONTENT_SAMPLE} from './modules/local/mean_gc_content'
+include { MEAN_GC_CONTENT as MEAN_GC_CONTENT_ORG} from './modules/local/mean_gc_content'
 
 //
 // Define inputs and other parameters (these can also be provided in the nextflow.config file)
@@ -63,18 +64,43 @@ workflow {
      }
 
     //
-    // Get sequence GC content for each species, using all sequences (from all files) TODO:grouped by org
+    // Create ch for caclulating GC content: group sequences by id
     //
-    MEAN_GC_CONTENT(EXTRACT_SEQUENCE.out.sequence)
+    grouped_sequences_by_id = EXTRACT_SEQUENCE.out.sequence
+        .map { meta, seq -> [meta.id, 'id', seq] }
+        .groupTuple(by: [0,1])
+
+    //
+    // Get sequence GC content for each species, using all sequences (from all files) grouped by sample
+    //
+    MEAN_GC_CONTENT_SAMPLE(grouped_sequences_by_id)
+
+    //
+    // Create ch for caclulating GC content: group sequences by org
+    //
+    grouped_sequences = EXTRACT_SEQUENCE.out.sequence
+        .map { meta, seq -> [meta.org, 'org', seq] }
+        .groupTuple(by: [0,1])
+
+    //
+    // Get sequence GC content for each species, using all sequences grouped by org
+    //
+    MEAN_GC_CONTENT_ORG(grouped_sequences)
 
     //
     // Prepare input channel for MultiQC
     //
-    ch_multiqc_files = FASTQC.out.zip.join(MEAN_GC_CONTENT.out.mean_gc_content)
-                .map { [it[1], it[2]] }
-                .collect()
+    ch_fastqc = FASTQC.out.zip
+        .map { it[1] }
+        .collect()
 
-    ch_multiqc_files.view { println "MultiQC input: $it" }
+    ch_multiqc_files = ch_fastqc.mix(ch_multiqc_files)
+
+    // ch_gc_content_org = MEAN_GC_CONTENT_ORG.out.mean_gc_content
+    //     .map { org, group_type, gc_content -> gc_content }
+    //     .collect()
+
+    // ch_multiqc_files.view { println "MultiQC input: $it" }
 
     //
     // Call MultiQC with minimal inputs
@@ -82,7 +108,7 @@ workflow {
     MULTIQC (
         ch_multiqc_files,  // This cannot be an empty list
         [],  // multiqc_config
-        [],  // extra_multiqc_config
+        params.multiqc_config,  // extra_multiqc_config
         [],  // multiqc_logo
         [],  // replace_names
         []   // sample_names
