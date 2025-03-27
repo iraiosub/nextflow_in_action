@@ -1,7 +1,0 @@
-custom_data:
-  gc_content:
-    name: GC Content
-    path_filters:
-      - "*mean_gc_content.tsv"
-    headers: true
-    section_name: GC Content

@@ -67,8 +67,8 @@ workflow {
     // Create ch for caclulating GC content: group sequences by id
     //
     grouped_sequences_by_id = EXTRACT_SEQUENCE.out.sequence
-        .map { meta, seq -> [meta.id, 'id', seq] }
-        .groupTuple(by: [0,1])
+        .map { meta, seq -> [meta.id, seq] }
+        .groupTuple(by: [0])
 
     //
     // Get sequence GC content for each species, using all sequences (from all files) grouped by sample
@@ -79,8 +79,8 @@ workflow {
     // Create ch for caclulating GC content: group sequences by org
     //
     grouped_sequences = EXTRACT_SEQUENCE.out.sequence
-        .map { meta, seq -> [meta.org, 'org', seq] }
-        .groupTuple(by: [0,1])
+        .map { meta, seq -> [meta.org, seq] }
+        .groupTuple(by: [0])
 
     //
     // Get sequence GC content for each species, using all sequences grouped by org
@@ -95,11 +95,6 @@ workflow {
         .collect()
 
     ch_multiqc_files = ch_fastqc.mix(ch_multiqc_files)
-
-    // ch_gc_content_org = MEAN_GC_CONTENT_ORG.out.mean_gc_content
-    //     .map { org, group_type, gc_content -> gc_content }
-    //     .collect()
-
     // ch_multiqc_files.view { println "MultiQC input: $it" }
 
     //
@@ -108,7 +103,7 @@ workflow {
     MULTIQC (
         ch_multiqc_files,  // This cannot be an empty list
         [],  // multiqc_config
-        params.multiqc_config,  // extra_multiqc_config
+        [],  // extra_multiqc_config
         [],  // multiqc_logo
         [],  // replace_names
         []   // sample_names

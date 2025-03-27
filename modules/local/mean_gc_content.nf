@@ -2,10 +2,10 @@ process MEAN_GC_CONTENT {
     tag "$group_key"
 
     input:
-    tuple val(group_key), val(group_type), path(sequences)
+    tuple val(group_key), path(sequences)
 
     output:
-    tuple val(group_key), val(group_type), path("*.tsv"), emit: mean_gc_content
+    tuple val(group_key), path("*.tsv"), emit: mean_gc_content
 
     script:
     """
