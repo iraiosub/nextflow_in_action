@@ -1,10 +1,7 @@
 # "Nextflow in Action: Design and Implement Your Own Bioinformatics Workflows" workshop
 
 
-
-
-
-## Project Structure: nextflow_in_action
+## Project Structure:
 
 ```plaintext
 nextflow_in_action/
@@ -46,18 +43,3 @@ This pipeline uses a **default `publishDir` configuration** in `nextflow.config`
 Creates a separate output folder per process, using the last part of the process name.
 
 ---
-
-### Default Behavior (`nextflow.config`)
-
-```groovy
-process {
-    publishDir = [
-        path: { "${params.outdir}/${task.process.tokenize(':')[-1].toLowerCase()}" },
-        mode: 'copy',
-        saveAs: { filename -> filename.equals('versions.yml') ? null : filename }
-    ]
-}
-```
-
-You can override the default output directory for a specific process using a withName block in `modules.config`.
-You can override `path`, `mode`, or other `publishDir` options.

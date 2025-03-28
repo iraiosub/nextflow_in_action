@@ -34,11 +34,6 @@ workflow {
         }
 
     //
-    // Create channel for collecting files for MultiQC
-    //
-    ch_multiqc_files = Channel.empty()
-
-    //
     // Extract sequences from FASTQ files
     //
     EXTRACT_SEQUENCE(read_ch)
