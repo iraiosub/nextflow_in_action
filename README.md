@@ -1,6 +1,6 @@
 # "Nextflow in Action: Design and Implement Your Own Bioinformatics Workflows" workshop
 
-## Project Structure: nextflow_in_action
+## Project Structure:
 
 ```plaintext
 nextflow_in_action/
