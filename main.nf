@@ -56,11 +56,14 @@ workflow {
      }
 
     //
-    // Create ch for caclulating GC content: group sequences by id
+    // Create a channel for calculating GC content by grouping sequences by id
     //
     grouped_sequences_by_id = EXTRACT_SEQUENCE.out.sequence
-        .map { meta, seq -> [meta.id, seq] }
-        .groupTuple(by: [0])
+        // Restructure each item in the channel:
+        // From: [meta (map containing id), seq]
+        // To:   [id (extracted from meta), seq]
+        .map { meta, seq -> [meta.id, seq] }  // Create a new list with just the id and sequence
+        .groupTuple(by: [0])  // The 'by: [0]' means we're grouping based on the first element (index 0) of each item
 
     //
     // Get sequence GC content for each species, using all sequences (from all files) grouped by sample
@@ -68,15 +71,15 @@ workflow {
     MEAN_GC_CONTENT_SAMPLE(grouped_sequences_by_id)
 
     //
-    // Create ch for caclulating GC content: group sequences by org
+    // Create a channel for calculating GC content by grouping sequences by org
     //
-    grouped_sequences = EXTRACT_SEQUENCE.out.sequence
+    grouped_sequences_by_org = EXTRACT_SEQUENCE.out.sequence
         .map { meta, seq -> [meta.org, seq] }
         .groupTuple(by: [0])
 
     //
     // Get sequence GC content for each species, using all sequences grouped by org
     //
-    MEAN_GC_CONTENT_ORG(grouped_sequences)
+    MEAN_GC_CONTENT_ORG(grouped_sequences_by_org)
 
 }
