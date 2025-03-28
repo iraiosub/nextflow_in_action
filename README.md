@@ -34,11 +34,3 @@ nextflow_in_action/
 ├── README.md                 # You're reading it! Description of the project and structure
 └── samplesheet.csv           # Sample metadata used as input to the pipeline
 ```
-
-
-## Process-Specific Output Configuration
-
-This pipeline uses a **default `publishDir` configuration** in `nextflow.config` to organize results into process-specific subfolders.
-Creates a separate output folder per process, using the last part of the process name.
-
----
