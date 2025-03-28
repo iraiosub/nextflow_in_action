@@ -25,8 +25,7 @@ nextflow_in_action/
 │   │   ├── reverse_complement.nf
 │   │   └── sequence_length.nf
 │   └── nf-core/              # nf-core compatible modules (e.g., fastqc, multiqc)
-│       ├── fastqc/
-│       └── multiqc/
+│       └── fastqc/
 ├── .gitignore                # Git ignored files
 ├── .nf-core.yml              # nf-core metadata and linting configuration
 ├── main.nf                   # Main pipeline script (entry point)
