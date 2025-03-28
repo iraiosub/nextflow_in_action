@@ -13,8 +13,6 @@ include { EXTRACT_SEQUENCE } from './modules/local/extract_sequence'
 //
 params.input = file("$projectDir/samplesheet.csv", checkIfExists: true)
 
-
-
 //
 // Define the main workflow
 //
@@ -30,11 +28,6 @@ workflow {
                 def reads = file(row.fastq, checkIfExists: true)
                 [meta, reads]
         }
-
-    //
-    // Create channel for collecting files for MultiQC
-    //
-    ch_multiqc_files = Channel.empty()
 
     //
     // Extract sequences from FASTQ files
