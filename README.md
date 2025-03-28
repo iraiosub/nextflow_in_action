@@ -4,7 +4,7 @@
 
 
 
-## Project Structure: nextflow_in_action
+## Project Structure:
 
 ```plaintext
 nextflow_in_action/
