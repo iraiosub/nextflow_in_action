@@ -9,6 +9,8 @@ date: "March 31, 2025"
 format: 
   revealjs:
     theme: dark
+    code-fold: true
+    highlight-style: github
     include-in-header:
       text: |
         <style>
@@ -73,3 +75,19 @@ Writing Nextflow is a time investment, how much effort you put into writing your
 
 - Config hierarchies
 - Channel types
+```{r}
+#| echo: true   # Show the code
+#| eval: true   # Execute the code
+df=data(mtcars)
+head(mtcars)
+```
+
+## When to write a Nextflow pipeline?
+
+```{r}
+#| echo: true   # Show the code
+#| eval: true   # Execute the code
+library(ggplot2)
+ggplot(mtcars,aes(x=mpg,y=cyl)) + geom_point()
+```
+
