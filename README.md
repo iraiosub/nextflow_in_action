@@ -1,10 +1,6 @@
 # "Nextflow in Action: Design and Implement Your Own Bioinformatics Workflows" workshop
 
-
-
-
-
-## Project Structure: nextflow_in_action
+## Project Structure:
 
 ```plaintext
 nextflow_in_action/
@@ -23,41 +19,10 @@ nextflow_in_action/
 │   └── mouse_2.fastq
 ├── modules/                  # Nextflow modules, both custom and nf-core
 │   ├── local/                # Custom local modules written in DSL2 (`.nf` files)
-│   │   ├── extract_sequence.nf
-│   │   ├── mean_gc_content.nf
-│   │   ├── reverse_complement.nf
-│   │   └── sequence_length.nf
-│   └── nf-core/              # nf-core compatible modules (e.g., fastqc, multiqc)
-│       ├── fastqc/
-│       └── multiqc/
+│   │   └── extract_sequence.nf
 ├── .gitignore                # Git ignored files
-├── .nf-core.yml              # nf-core metadata and linting configuration
 ├── main.nf                   # Main pipeline script (entry point)
-├── modules.json              # nf-core module registry (for reproducibility)
 ├── nextflow.config           # Global Nextflow configuration (params, profiles, etc.)
 ├── README.md                 # You're reading it! Description of the project and structure
 └── samplesheet.csv           # Sample metadata used as input to the pipeline
 ```
-
-
-## Process-Specific Output Configuration
-
-This pipeline uses a **default `publishDir` configuration** in `nextflow.config` to organize results into process-specific subfolders.
-Creates a separate output folder per process, using the last part of the process name.
-
----
-
-### Default Behavior (`nextflow.config`)
-
-```groovy
-process {
-    publishDir = [
-        path: { "${params.outdir}/${task.process.tokenize(':')[-1].toLowerCase()}" },
-        mode: 'copy',
-        saveAs: { filename -> filename.equals('versions.yml') ? null : filename }
-    ]
-}
-```
-
-You can override the default output directory for a specific process using a withName block in `modules.config`.
-You can override `path`, `mode`, or other `publishDir` options.
