@@ -17,8 +17,6 @@ include { MEAN_GC_CONTENT as MEAN_GC_CONTENT_ORG} from './modules/local/mean_gc_
 // Define inputs and other parameters (these can also be provided in the nextflow.config file)
 //
 params.input = file("$projectDir/samplesheet.csv", checkIfExists: true)
-params.reverse_complement = false
-params.outdir = "results"
 
 //
 // Define the main workflow
