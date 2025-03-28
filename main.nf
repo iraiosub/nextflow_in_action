@@ -20,11 +20,16 @@ workflow {
     // Create channel from input file provided through params.input
     //
     read_ch = Channel
-            .fromPath( params.input )
-            .splitCsv(header:true)
+            .fromPath( params.input ) // Read the CSV file
+            .splitCsv(header:true)    // Parse the CSV, assuming it has a header
             .map { row ->
+                // Create a metadata map for each sample
                 def meta = [id: row.sample, org: row.org]
+
+                // Get the path to the FASTQ file and check if it exists
                 def reads = file(row.fastq, checkIfExists: true)
+
+                // Return a list containing the metadata and the file object
                 [meta, reads]
         }
 
