@@ -504,8 +504,8 @@ Charlotte Capitanchik, PhD
 </section>
 <section id="choose-your-own-adventure" class="slide level2 smaller">
 <h2>Choose your own adventure! ⚔️</h2>
-<p>All documents/code for this workshop is at <code>github.com/iraiosub/nextflow_in_action</code>.</p>
-<p>The lecture is in <code>docs/Lecture.qmd.</code></p>
+<p>All documents/code for this workshop: <code>github.com/iraiosub/nextflow_in_action</code>.</p>
+<p>Lecture slides: in <code>docs/Lecture.qmd.</code></p>
 <p>Choose what environment you will work with today:</p>
 <ol type="1">
 <li>CREATE - instructions in <code>docs/CREATE_setup.md</code></li>
@@ -516,13 +516,74 @@ Charlotte Capitanchik, PhD
 <section id="getting-the-code" class="slide level2 smaller">
 <h2>Getting the code</h2>
 <ul>
-<li>You will need to fork our GitHub repo <code>github.com/iraiosub/nextflow_in_action</code></li>
+<li>Fork our GitHub repo <code>github.com/iraiosub/nextflow_in_action</code></li>
 <li>Uncheck the box that only forks the main branch.</li>
 <li>If you are working on CREATE or locally, clone the repo.</li>
 <li>Checkout branch <code>1</code> to get started</li>
 </ul>
 
 <img data-src="Lecture_files/imgs/github_forking.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Borrowed from https://biostats-r.github.io/biostats/github/3_Fork_Tutorial.html</p></section>
+<section id="lets-write-a-toy-pipeline-together-1" class="slide level2">
+<h2>Let’s write a toy pipeline together</h2>
+
+<img data-src="Lecture_files/imgs/PIPELINE%20SUMMARY.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="ready-to-go" class="slide level2">
+<h2>Ready to go!</h2>
+<div style="font-size: smaller">
+<pre class="nextflow"><code>nextflow_in_action/
+├── bin/                      # Scripts used by processes
+│   ├── extract_sequence.sh
+│   ├── mean_gc_content.sh
+│   ├── reverse_complement.sh
+│   └── sequence_length.sh
+├── conf/                     # Configuration files for the pipeline
+│   └── modules.config        # Module behavior
+├── data/                     # Input FASTQ files
+│   ├── human_1.fastq
+│   ├── human_2.fastq
+│   ├── mouse_1.fastq
+│   └── mouse_2.fastq
+├── modules/                  # Nextflow DSL2 modules
+│   └── local/                # Custom modules
+│       └── extract_sequence.nf
+├── main.nf                   # 🚀 Main pipeline script
+├── nextflow.config           # 🔧 Global config (params, profiles, resources)
+└── samplesheet.csv           # 📋 Sample metadata used as input</code></pre>
+</div>
+</section>
+<section id="building-the-input-channel" class="slide level2">
+<h2>Building the input channel</h2>
+<div style="font-size: smaller">
+<p>🔧 Input is read from a CSV in <code>main.nf</code>:</p>
+<pre class="nextflow"><code>Channel
+  .fromPath(params.input)
+  .splitCsv(header: true)
+  .map { row -&gt;
+      def meta = [id: row.sample, org: row.org]
+      def reads = file(row.fastq, checkIfExists: true)
+      [meta, reads]
+  }</code></pre>
+</div>
+</section>
+<section id="building-the-input-channel-1" class="slide level2">
+<h2>Building the input channel</h2>
+<div style="font-size: smaller">
+<p>🔧 Input is read from a CSV in <code>main.nf</code>:</p>
+<pre class="nextflow"><code>Channel
+  .fromPath(params.input)
+  .splitCsv(header: true)
+  .map { row -&gt;
+      def meta = [id: row.sample, org: row.org]
+      def reads = file(row.fastq, checkIfExists: true)
+      [meta, reads]
+  }</code></pre>
+<ul>
+<li><code>[meta, reads]</code> is a channel of pairs (tuples): <code>meta</code> is a map (<code>[id: 'human_1', org: 'human']</code>) and <code>reads</code> is a FASTQ file.</li>
+<li>Keeps metadata and data together as they flow through the pipeline.</li>
+<li><code>id</code> and <code>org</code> are accessed as <code>meta.id</code> and <code>meta.org</code></li>
+</ul>
+</div>
+</section>
 <section id="task-1" class="slide level2">
 <h2>Task 1</h2>
 <div class="center">
@@ -543,7 +604,7 @@ Charlotte Capitanchik, PhD
 <p>🎯 Write your own module to calculate sequence length and add it to the pipeline</p>
 <p>💡 Hint: Look in the bin folder</p>
 <p><code>sequence_length.sh</code> usage:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">sequence_length.sh</span> input.tsv output.tsv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">sequence_length.sh</span> input.tsv output.tsv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="task-3" class="slide level2">

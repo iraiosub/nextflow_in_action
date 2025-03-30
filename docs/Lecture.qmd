@@ -94,9 +94,9 @@ You will need:
 
 ## Choose your own adventure! ⚔️ {.smaller}
 
-All documents/code for this workshop is at `github.com/iraiosub/nextflow_in_action`.
+All documents/code for this workshop: `github.com/iraiosub/nextflow_in_action`.
 
-The lecture is in `docs/Lecture.qmd.`
+Lecture slides: in `docs/Lecture.qmd.`
 
 Choose what environment you will work with today:
 
@@ -106,12 +106,80 @@ Choose what environment you will work with today:
 
 ## Getting the code {.smaller}
 
--   You will need to fork our GitHub repo `github.com/iraiosub/nextflow_in_action`
+-   Fork our GitHub repo `github.com/iraiosub/nextflow_in_action`
 -   Uncheck the box that only forks the main branch.
 -   If you are working on CREATE or locally, clone the repo.
 -   Checkout branch `1` to get started
 
 ![Borrowed from https://biostats-r.github.io/biostats/github/3_Fork_Tutorial.html](Lecture_files/imgs/github_forking.png){width="70%"}
+
+## Let's write a toy pipeline together
+
+![](Lecture_files/imgs/PIPELINE%20SUMMARY.png){fig-align="center"}
+
+## Ready to go!
+
+::: {style="font-size: smaller"}
+``` nextflow
+nextflow_in_action/
+├── bin/                      # Scripts used by processes
+│   ├── extract_sequence.sh
+│   ├── mean_gc_content.sh
+│   ├── reverse_complement.sh
+│   └── sequence_length.sh
+├── conf/                     # Configuration files for the pipeline
+│   └── modules.config        # Module behavior
+├── data/                     # Input FASTQ files
+│   ├── human_1.fastq
+│   ├── human_2.fastq
+│   ├── mouse_1.fastq
+│   └── mouse_2.fastq
+├── modules/                  # Nextflow DSL2 modules
+│   └── local/                # Custom modules
+│       └── extract_sequence.nf
+├── main.nf                   # 🚀 Main pipeline script
+├── nextflow.config           # 🔧 Global config (params, profiles, resources)
+└── samplesheet.csv           # 📋 Sample metadata used as input
+```
+:::
+
+## Building the input channel
+
+::: {style="font-size: smaller"}
+🔧 Input is read from a CSV in `main.nf`:
+
+``` nextflow
+Channel
+  .fromPath(params.input)
+  .splitCsv(header: true)
+  .map { row ->
+      def meta = [id: row.sample, org: row.org]
+      def reads = file(row.fastq, checkIfExists: true)
+      [meta, reads]
+  }
+```
+:::
+
+## Building the input channel
+
+::: {style="font-size: smaller"}
+🔧 Input is read from a CSV in `main.nf`:
+
+``` nextflow
+Channel
+  .fromPath(params.input)
+  .splitCsv(header: true)
+  .map { row ->
+      def meta = [id: row.sample, org: row.org]
+      def reads = file(row.fastq, checkIfExists: true)
+      [meta, reads]
+  }
+```
+
+-   `[meta, reads]` is a channel of pairs (tuples): `meta` is a map (`[id: 'human_1', org: 'human']`) and `reads` is a FASTQ file.
+-   Keeps metadata and data together as they flow through the pipeline.
+-   `id` and `org` are accessed as `meta.id` and `meta.org`
+:::
 
 ## Task 1
 
