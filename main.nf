@@ -6,6 +6,7 @@ nextflow.enable.dsl = 2
 // Import modules
 //
 include { FASTQC } from './modules/nf-core/fastqc'
+include { MULTIQC } from './modules/nf-core/multiqc'
 include { EXTRACT_SEQUENCE } from './modules/local/extract_sequence'
 include { SEQUENCE_LENGTH } from './modules/local/sequence_length'
 include { REVERSE_COMPLEMENT } from './modules/local/reverse_complement'
@@ -81,5 +82,32 @@ workflow {
     // Get sequence GC content for each species, using all sequences grouped by org
     //
     MEAN_GC_CONTENT_ORG(grouped_sequences_by_org)
+
+    //
+    // Create channel for collecting files for MultiQC
+    //
+    ch_multiqc_files = Channel.empty()
+
+    //
+    // Prepare input channel for MultiQC
+    //
+     ch_fastqc = FASTQC.out.zip
+         .map { it[1] }
+         .collect()
+
+     ch_multiqc_files = ch_fastqc.mix(ch_multiqc_files)
+     // ch_multiqc_files.view { println "MultiQC input: $it" }
+
+     //
+     // Call MultiQC with minimal inputs
+     //
+     MULTIQC (
+         ch_multiqc_files,  // This cannot be an empty list
+         [],  // multiqc_config
+         [],  // extra_multiqc_config
+         [],  // multiqc_logo
+         [],  // replace_names
+         []   // sample_names
+     )
 
 }
