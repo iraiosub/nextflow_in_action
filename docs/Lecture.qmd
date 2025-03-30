@@ -48,6 +48,10 @@ A pipeline or workflow connects multiple programs together to analyse data.
 :::
 
 ------------------------------------------------------------------------
+## Nextflow or Snakemake?
+::: {.figure .center}
+![ Djaffardjy et al., (2023), *Computational and Structural Biotechnology Journal*](Lecture_files/imgs/monthly_snakemake_nextflow_repos.jpg){width="75%"}
+:::
 
 ## Why Nextflow?
 
