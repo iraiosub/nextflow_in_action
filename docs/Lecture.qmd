@@ -115,7 +115,7 @@ Choose what environment you will work with today:
 ## Task 1
 
 ::: center
-🎯 Add a FASTQC step using nf-core tools
+🎯 Add a FastQC step using nf-core tools
 
 💡 Hint: To run the pipeline `nextflow run main.nf -profile ...`
 :::
@@ -123,7 +123,7 @@ Choose what environment you will work with today:
 ## Task 1: nf-core modules to the rescue!
 
 ::: center
-🎯 Add a FASTQC step using nf-core tools
+🎯 Add a FastQC step using nf-core tools
 
 `nf-core modules install fastqc`
 :::
@@ -153,7 +153,7 @@ Choose what environment you will work with today:
 ::: center
 🎯 Write a module to calculate the mean GC content of the sequences
 
-🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sequence and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.
+🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sample and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.
 
 💡 Hint: You will need to manipulate the channels being passed to your module
 :::
@@ -193,6 +193,7 @@ Choose what environment you will work with today:
 
 ## Important resources
 
+::: {.cell style="font-size: 80%;"}
 -   Nextflow and nf-core docs
 -   Nextflow training: `https://training.nextflow.io/`
 -   nf-core Slack workspace
@@ -201,3 +202,4 @@ Choose what environment you will work with today:
 -   VSCode Nextflow plugin
 -   nf-core/bytesize on YouTube
 -   Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid
+:::
