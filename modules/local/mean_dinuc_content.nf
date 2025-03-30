@@ -1,4 +1,4 @@
-process MEAN_GC_CONTENT {
+process MEAN_DINUC_CONTENT {
     tag "$group_key"
 
     input:
@@ -8,7 +8,9 @@ process MEAN_GC_CONTENT {
     tuple val(group_key), path("*.tsv"), emit: mean_gc_content
 
     script:
+    def args          = task.ext.args ?: ''
+
     """
-    mean_dinucleotide_content.sh ${group_key} gc ${sequences} > ${group_key}.mean_gc_content.tsv
+    mean_dinucleotide_content.sh ${group_key} ${args} ${sequences} > ${group_key}.mean_${args}_content.tsv
     """
 }

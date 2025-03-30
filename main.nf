@@ -10,8 +10,9 @@ include { MULTIQC } from './modules/nf-core/multiqc'
 include { EXTRACT_SEQUENCE } from './modules/local/extract_sequence'
 include { SEQUENCE_LENGTH } from './modules/local/sequence_length'
 include { REVERSE_COMPLEMENT } from './modules/local/reverse_complement'
-include { MEAN_GC_CONTENT as MEAN_GC_CONTENT_SAMPLE} from './modules/local/mean_gc_content'
-include { MEAN_GC_CONTENT as MEAN_GC_CONTENT_ORG} from './modules/local/mean_gc_content'
+include { MEAN_DINUC_CONTENT as MEAN_GC_CONTENT_SAMPLE} from './modules/local/mean_dinuc_content'
+include { MEAN_DINUC_CONTENT as MEAN_GC_CONTENT_ORG} from './modules/local/mean_dinuc_content'
+include { MEAN_DINUC_CONTENT as MEAN_AT_CONTENT_ORG} from './modules/local/mean_dinuc_content'
 
 //
 // Define inputs and other parameters (these can also be provided in the nextflow.config file)
@@ -82,6 +83,11 @@ workflow {
     // Get sequence GC content for each species, using all sequences grouped by org
     //
     MEAN_GC_CONTENT_ORG(grouped_sequences_by_org)
+
+    //
+    // Get sequence AT content for each species, using all sequences grouped by org
+    //
+    MEAN_AT_CONTENT_ORG(grouped_sequences_by_org)
 
     //
     // Create channel for collecting files for MultiQC
