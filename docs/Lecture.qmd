@@ -10,6 +10,7 @@ format:
   revealjs:
     theme: dark
     code-fold: true
+    code-line-numbers: false
     highlight-style: github
     include-in-header:
       text: |
@@ -137,7 +138,9 @@ Choose what environment you will work with today:
 
 `sequence_length.sh` usage:
 
-`sequence_length.sh input.tsv output.tsv`
+``` bash
+sequence_length.sh input.tsv output.tsv
+```
 :::
 
 ## Task 3
@@ -156,6 +159,32 @@ Choose what environment you will work with today:
 🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sample and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.
 
 💡 Hint: You will need to manipulate the channels being passed to your module
+:::
+
+## Task 4: taming the data stream
+
+::: incremental
+::: {style="font-size: smaller"}
+-   **Channel structure from `EXTRACT_SEQUENCE.out.sequence`:** `[meta, seq]` → `meta` is a map that includes the `id` and `org` fields.
+
+-   **Goal:** Group all sequences by `org` → Required for computing GC content per group.
+
+-   **Step 1 – Map to `[org, seq]`:**
+
+    ``` nextflow
+    .map { meta, seq -> [meta.org, seq] }
+    ```
+
+    → Makes the org easy to access for grouping.
+
+-   **Step 2 – Group by `org`, now the first element (index 0) of each item:**
+
+    ``` nextflow
+    .groupTuple(by: [0])
+    ```
+
+    → Groups sequences under the same id, resulting in a channel of grouped tuples: \[org, \[seq1, seq2, ...\]\]
+:::
 :::
 
 ## Task 5
