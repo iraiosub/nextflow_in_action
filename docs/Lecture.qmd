@@ -145,10 +145,15 @@ Choose what environment you will work with today:
 💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!
 :::
 
-## Common headaches!
+## Common headaches
 
--   Config hierarchies
--   Channel types
+-   Config hierarchies! You can convince yourself of this by messing around with where you set your `params.reverse_complement`...
+![](Lecture_files/imgs/param hierarchy.png){fig-align="center"}
+
+## Common headaches
+
+-   Q: Why does only one sample run through the pipeline instead of all of them? A: Queue channels (e.g sample reads) vs. value channels (eg. genome reference). 
+- If you print (with `println`) a channel variable and it’s a value channel, regardless of its content it will always show `DataflowVariable(value=null)`. A queue channel on the other hand will print `DataflowBroadcast around DataflowStream[?]`.
 
 ## Important resources
 
@@ -156,6 +161,7 @@ Choose what environment you will work with today:
 -  nf-core Slack workspace
 -  Forum for Nextflow questions: `https://community.seqera.io/`
 -  Seqera AI
+- VSCode Nextflow plugin
 - nf-core/bytesize on YouTube
 - Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid
 

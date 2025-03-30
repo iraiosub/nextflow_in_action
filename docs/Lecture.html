@@ -484,10 +484,16 @@ Charlotte Capitanchik, PhD
 </div>
 </section>
 <section id="common-headaches" class="slide level2">
-<h2>Common headaches!</h2>
+<h2>Common headaches</h2>
 <ul>
-<li>Config hierarchies</li>
-<li>Channel types</li>
+<li>Config hierarchies! You can convince yourself of this by messing around with where you set your <code>params.reverse_complement</code>… <img data-src="Lecture_files/imgs/param%20hierarchy.png" class="quarto-figure quarto-figure-center"></li>
+</ul>
+</section>
+<section id="common-headaches-1" class="slide level2">
+<h2>Common headaches</h2>
+<ul>
+<li>Q: Why does only one sample run through the pipeline instead of all of them? A: Queue channels (e.g sample reads) vs.&nbsp;value channels (eg. genome reference).</li>
+<li>If you print (with <code>println</code>) a channel variable and it’s a value channel, regardless of its content it will always show <code>DataflowVariable(value=null)</code>. A queue channel on the other hand will print <code>DataflowBroadcast around DataflowStream[?]</code>.</li>
 </ul>
 </section>
 <section id="important-resources" class="slide level2">
@@ -497,6 +503,7 @@ Charlotte Capitanchik, PhD
 <li>nf-core Slack workspace</li>
 <li>Forum for Nextflow questions: <code>https://community.seqera.io/</code></li>
 <li>Seqera AI</li>
+<li>VSCode Nextflow plugin</li>
 <li>nf-core/bytesize on YouTube</li>
 <li>Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid</li>
 </ul>
