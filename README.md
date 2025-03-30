@@ -24,14 +24,14 @@ In this workshop you will learn:
 ## Getting Started
 ## Authors
 
-- [Ira Iosub, PhD](https://www.github.com/iraiosub)
-- [Charlotte Capitanchik, PhD](https://www.github.com/charlotteanne42)
+- [Ira Iosub, PhD](https://www.github.com/iraiosub) ira.iosub@crick.ac.uk
+- [Charlotte Capitanchik, PhD](https://www.github.com/charlotteanne42) charlotte.capitanchik@kcl.ac.uk
 
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-We'd love to hear if you implement our workshop and how it went! Drop us a line at blah@crick.ac.uk to tell us about it.
+We'd love to hear if you implement our workshop and how it went! Drop us an email to tell us about it.
 
 If you notice any mistakes, or would like to make a contribution please feel free to open an issue.
