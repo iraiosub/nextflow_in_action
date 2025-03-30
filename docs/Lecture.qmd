@@ -41,53 +41,61 @@ editor: visual
 A pipeline or workflow connects multiple programs together to analyse data.
 
 ::: {.figure .center}
-![Wratten,Wilm & Goeke (2021), *Nature Methods*](Lecture_files/imgs/fig1_goeke_workflow_Review.png){width=75%}
+![Wratten,Wilm & Goeke (2021), *Nature Methods*](Lecture_files/imgs/fig1_goeke_workflow_Review.png){width="75%"}
 :::
 
----
+------------------------------------------------------------------------
 
 ## Why Nextflow?
-:::: {.columns}
+
+::: columns
 ::: {.column width="40%"}
--   <span style='color: #3ac486;'>nf-core</span> community project:
-    - 127 pipelines
-    - 1443 modules
-    - Slack workspace with 11,642 members
-- Seqera AI, Seqera platform and other tooling
+-   [nf-core]{style="color: #3ac486;"} community project:
+    -   127 pipelines
+    -   1443 modules
+    -   Slack workspace with 11,642 members
+-   GUIs such as Seqera platform, flow.bio
 :::
 
 ::: {.column width="60%"}
-![Organisations using nf-core as of March 2025](Lecture_files/imgs/nfcore_map.png){width=100%}
+![Organisations using nf-core as of March 2025](Lecture_files/imgs/nfcore_map.png){width="100%"}
 :::
-::::
-
+:::
 
 ## When to write a Nextflow pipeline?
 
-Writing Nextflow is a time investment, how much effort you put into writing your workflow will depend on your needs...
+![](Lecture_files/imgs/whenToNextflow.png){fig-align="center"}
+
+## Let's write a toy pipeline together
+
+![](Lecture_files/imgs/PIPELINE SUMMARY.png){fig-align="center"}
+
+## Set up
+
+You will need:
+
+-   Nextflow
+
+-   A container engine (Docker/Singularity/Apptainer)
+
+-   nf-core (recommend installing with conda/mamba)
+
+-   nf-test (recommend installing with conda/mamba)
+
+## Choose your own adventure! ⚔️
+
+1.  CREATE
+
+2.  Your laptop
+
+3.  (Last resort) Gitpod Codespace
 
 ## Common headaches!
 
-- Config hierarchies
-- Channel types
+-   Config hierarchies
+-   Channel types
 
 ## Important resources
 
-- Config hierarchies
-- Channel types
-```{r}
-#| echo: true   # Show the code
-#| eval: true   # Execute the code
-df=data(mtcars)
-head(mtcars)
-```
-
-## When to write a Nextflow pipeline?
-
-```{r}
-#| echo: true   # Show the code
-#| eval: true   # Execute the code
-library(ggplot2)
-ggplot(mtcars,aes(x=mpg,y=cyl)) + geom_point()
-```
-
+-   Config hierarchies
+-   Channel types
