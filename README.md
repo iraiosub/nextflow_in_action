@@ -24,8 +24,8 @@ In this workshop you will learn:
 ## Getting Started
 ## Authors
 
-- [Ira Iosub, PhD](https://www.github.com/iraiosub) <ira.iosub@crick.ac.uk>
-- [Charlotte Capitanchik, PhD](https://www.github.com/charlotteanne42) <charlotte.capitanchik@kcl.ac.uk>
+- [Ira Iosub, PhD](https://www.github.com/iraiosub) ira.iosub@crick.ac.uk
+- [Charlotte Capitanchik, PhD](https://www.github.com/charlotteanne42) charlotte.capitanchik@kcl.ac.uk
 
 
 ## License
