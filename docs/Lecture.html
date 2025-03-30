@@ -445,13 +445,13 @@ Charlotte Capitanchik, PhD
 <ol type="1">
 <li>CREATE - instructions in <code>docs/CREATE_setup.md</code></li>
 <li>Your laptop - we recommend downloading Dockerhub and using docker (ensure Dockerhub is running whenever you want to use it) and then using conda/mamba to install everything else: <code>mamba create -n nf -c conda-forge -c bioconda nextflow nf-core nf-test</code></li>
-<li>(Last resort) Gitpod Codespace</li>
+<li>(Last resort) GitHub Codespace</li>
 </ol>
 </section>
 <section id="getting-the-code" class="slide level2 smaller">
 <h2>Getting the code</h2>
 <ul>
-<li>You will need to fork our Github repo <code>github.com/iraiosub/nextflow_in_action</code></li>
+<li>You will need to fork our GitHub repo <code>github.com/iraiosub/nextflow_in_action</code></li>
 <li>Uncheck the box that only forks the main branch.</li>
 <li>If you are working on CREATE or locally, clone the repo.</li>
 <li>Checkout branch <code>1</code> to get started</li>
@@ -462,7 +462,14 @@ Charlotte Capitanchik, PhD
 <h2>Task 1</h2>
 <div class="center">
 <p>🎯 Add a FASTQC step using nf-core tools</p>
-<p>💡 Hint: To run the pipeline `nextflow run main.nf</p>
+<p>💡 Hint: To run the pipeline <code>nextflow run main.nf -profile ...</code></p>
+</div>
+</section>
+<section id="task-1-nf-core-modules-to-the-rescue" class="slide level2">
+<h2>Task 1: nf-core modules to the rescue!</h2>
+<div class="center">
+<p>🎯 Add a FASTQC step using nf-core tools</p>
+<p><code>nf-core modules install fastqc</code></p>
 </div>
 </section>
 <section id="task-2" class="slide level2">
@@ -470,6 +477,8 @@ Charlotte Capitanchik, PhD
 <div class="center">
 <p>🎯 Write your own module to calculate sequence length and add it to the pipeline</p>
 <p>💡 Hint: Look in the bin folder</p>
+<p><code>sequence_length.sh</code> usage:</p>
+<p><code>sequence_length.sh input.tsv output.tsv</code></p>
 </div>
 </section>
 <section id="task-3" class="slide level2">
@@ -525,6 +534,7 @@ Charlotte Capitanchik, PhD
 <h2>Important resources</h2>
 <ul>
 <li>Nextflow and nf-core docs</li>
+<li>Nextflow training: <code>https://training.nextflow.io/</code></li>
 <li>nf-core Slack workspace</li>
 <li>Forum for Nextflow questions: <code>https://community.seqera.io/</code></li>
 <li>Seqera AI</li>

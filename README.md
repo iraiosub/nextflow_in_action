@@ -8,12 +8,13 @@ This workshop provides an introduction to bioinformatics workflow managers, with
 
 ## Prerequisites
 
-We assume some minimal exposure to Github and Nextflow. To get the most out of the workshop we would recommend participants look over the following training material beforehand:
+We assume some minimal exposure to GitHub and Nextflow. To get the most out of the workshop we would recommend participants look over the following training material beforehand:
 
 - Software Carpentry's [Git training](https://swcarpentry.github.io/git-novice/)
 - Seqera's ["Hello Nextflow" training](https://training.nextflow.io/latest/hello_nextflow/)
 
-In terms of software/hardware requirements, everything can be run locally on your laptop or on HPC as you prefer. You will need Nextflow installed and a container engine such as Docker or Singularity.
+In terms of software/hardware requirements, everything can be run locally on your laptop or on HPC as you prefer. You will need Nextflow and nf-core tools installed and a container engine such as Docker or Singularity.
+
 ## Learning Outcomes
 In this workshop you will learn:
 - How to compose a bioinformatics workflow in Nextflow using a combination of writing your own modules and utilising the incredible [nf-core modules](https://nf-co.re/modules/) resource.

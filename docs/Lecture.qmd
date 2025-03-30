@@ -48,9 +48,11 @@ A pipeline or workflow connects multiple programs together to analyse data.
 :::
 
 ------------------------------------------------------------------------
+
 ## Nextflow or Snakemake?
+
 ::: {.figure .center}
-![ Djaffardjy et al., (2023), *Computational and Structural Biotechnology Journal*](Lecture_files/imgs/monthly_snakemake_nextflow_repos.jpg){width="75%"}
+![Djaffardjy et al., (2023), *Computational and Structural Biotechnology Journal*](Lecture_files/imgs/monthly_snakemake_nextflow_repos.jpg){width="75%"}
 :::
 
 ## Why Nextflow?
@@ -99,11 +101,11 @@ Choose what environment you will work with today:
 
 1.  CREATE - instructions in `docs/CREATE_setup.md`
 2.  Your laptop - we recommend downloading Dockerhub and using docker (ensure Dockerhub is running whenever you want to use it) and then using conda/mamba to install everything else: `mamba create -n nf -c conda-forge -c bioconda nextflow nf-core nf-test`
-3.  (Last resort) Gitpod Codespace
+3.  (Last resort) GitHub Codespace
 
 ## Getting the code {.smaller}
 
--   You will need to fork our Github repo `github.com/iraiosub/nextflow_in_action`
+-   You will need to fork our GitHub repo `github.com/iraiosub/nextflow_in_action`
 -   Uncheck the box that only forks the main branch.
 -   If you are working on CREATE or locally, clone the repo.
 -   Checkout branch `1` to get started
@@ -112,29 +114,43 @@ Choose what environment you will work with today:
 
 ## Task 1
 
-::: {.center}
+::: center
 🎯 Add a FASTQC step using nf-core tools
 
-💡 Hint: To run the pipeline `nextflow run main.nf 
+💡 Hint: To run the pipeline `nextflow run main.nf -profile ...`
 :::
 
+## Task 1: nf-core modules to the rescue!
+
+::: center
+🎯 Add a FASTQC step using nf-core tools
+
+`nf-core modules install fastqc`
+:::
 
 ## Task 2
-::: {.center}
+
+::: center
 🎯 Write your own module to calculate sequence length and add it to the pipeline
 
 💡 Hint: Look in the bin folder
+
+`sequence_length.sh` usage:
+
+`sequence_length.sh input.tsv output.tsv`
 :::
 
 ## Task 3
-::: {.center}
+
+::: center
 🎯 Write a module to reverse complement the sequences
 
 🎯 Add a parameter to make the reverse complement step optional
 :::
 
 ## Task 4
-::: {.center}
+
+::: center
 🎯 Write a module to calculate the mean GC content of the sequences
 
 🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sequence and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.
@@ -143,43 +159,45 @@ Choose what environment you will work with today:
 :::
 
 ## Task 5
-::: {.center}
+
+::: center
 🎯 Add a MultiQC step to finish your pipeline. The MultiQC report should contain a summary of all the FastQC reports for each sequence.
 
 💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!
 :::
 
 ## Task 6
-::: {.center}
-🎯 Use `ext.args` to generalise your GC content module so that you can also calculate AT content. Use `conf/modules.config` to set the `ext.args` for each time you import the module. 
 
-💡 Hint: Look at the nf-core FastQC module to see how `ext.args` is used
-💡 Hint: Remember to import `modules.config` in `nextflow.config`
+::: center
+🎯 Use `ext.args` to generalise your GC content module so that you can also calculate AT content. Use `conf/modules.config` to set the `ext.args` for each time you import the module.
+
+💡 Hint: Look at the nf-core FastQC module to see how `ext.args` is used 💡 Hint: Remember to import `modules.config` in `nextflow.config`
 :::
+
 ## Task 7
-::: {.center}
+
+::: center
 🎯 Let's add tests to our pipeline with nf-test
 
 💡 Hint: We will follow Seqera's nf-test training together: `https://training.nextflow.io/2.1.4/side_quests/nf-test/#10-initialize-nf-test`
-
 :::
-## Common headaches
-
--   Config hierarchies! You can convince yourself of this by messing around with where you set your `params.reverse_complement`...
-![](Lecture_files/imgs/param hierarchy.png){fig-align="center"}
 
 ## Common headaches
 
--   Q: Why does only one sample run through the pipeline instead of all of them? A: Queue channels (e.g sample reads) vs. value channels (eg. genome reference). 
-- If you print (with `println`) a channel variable and it’s a value channel, regardless of its content it will always show `DataflowVariable(value=null)`. A queue channel on the other hand will print `DataflowBroadcast around DataflowStream[?]`.
+-   Config hierarchies! You can convince yourself of this by messing around with where you set your `params.reverse_complement`... ![](Lecture_files/imgs/param%20hierarchy.png){fig-align="center"}
+
+## Common headaches
+
+-   Q: Why does only one sample run through the pipeline instead of all of them? A: Queue channels (e.g sample reads) vs. value channels (eg. genome reference).
+-   If you print (with `println`) a channel variable and it’s a value channel, regardless of its content it will always show `DataflowVariable(value=null)`. A queue channel on the other hand will print `DataflowBroadcast around DataflowStream[?]`.
 
 ## Important resources
 
--  Nextflow and nf-core docs
--  nf-core Slack workspace
--  Forum for Nextflow questions: `https://community.seqera.io/`
--  Seqera AI
-- VSCode Nextflow plugin
-- nf-core/bytesize on YouTube
-- Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid
-
+-   Nextflow and nf-core docs
+-   Nextflow training: `https://training.nextflow.io/`
+-   nf-core Slack workspace
+-   Forum for Nextflow questions: `https://community.seqera.io/`
+-   Seqera AI
+-   VSCode Nextflow plugin
+-   nf-core/bytesize on YouTube
+-   Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid
