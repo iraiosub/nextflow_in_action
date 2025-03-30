@@ -36,6 +36,9 @@ format:
         }
         </style>
 editor: visual
+output: 
+    revealjs::revealjs_presentation:
+        css: styles.css
 ---
 
 A pipeline or workflow connects multiple programs together to analyse data.
@@ -68,7 +71,7 @@ A pipeline or workflow connects multiple programs together to analyse data.
 
 ## Let's write a toy pipeline together
 
-![](Lecture_files/imgs/PIPELINE SUMMARY.png){fig-align="center"}
+![](Lecture_files/imgs/PIPELINE%20SUMMARY.png){fig-align="center"}
 
 ## Set up
 
@@ -82,13 +85,65 @@ You will need:
 
 -   nf-test (recommend installing with conda/mamba)
 
-## Choose your own adventure! ⚔️
+## Choose your own adventure! ⚔️ {.smaller}
 
-1.  CREATE
+All documents/code for this workshop is at `github.com/iraiosub/nextflow_in_action`.
 
-2.  Your laptop
+The lecture is in `docs/Lecture.qmd.`
 
+Choose what environment you will work with today:
+
+1.  CREATE - instructions in `docs/CREATE_setup.md`
+2.  Your laptop - we recommend downloading Dockerhub and using docker (ensure Dockerhub is running whenever you want to use it) and then using conda/mamba to install everything else: `mamba create -n nf -c conda-forge -c bioconda nextflow nf-core nf-test`
 3.  (Last resort) Gitpod Codespace
+
+## Getting the code {.smaller}
+
+-   You will need to fork our Github repo `github.com/iraiosub/nextflow_in_action`
+-   Uncheck the box that only forks the main branch.
+-   If you are working on CREATE or locally, clone the repo.
+-   Checkout branch `1` to get started
+
+![Borrowed from https://biostats-r.github.io/biostats/github/3_Fork_Tutorial.html](Lecture_files/imgs/github_forking.png){width="70%"}
+
+## Task 1
+
+::: {.center}
+🎯 Add a FASTQC step using nf-core tools
+
+💡 Hint: To run the pipeline `nextflow run main.nf 
+:::
+
+
+## Task 2
+::: {.center}
+🎯 Write your own module to calculate sequence length and add it to the pipeline
+
+💡 Hint: Look in the bin folder
+:::
+
+## Task 3
+::: {.center}
+🎯 Write a module to reverse complement the sequences
+
+🎯 Add a parameter to make the reverse complement step optional
+:::
+
+## Task 4
+::: {.center}
+🎯 Write a module to calculate the mean GC content of the sequences
+
+🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sequence and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.
+
+💡 Hint: You will need to manipulate the channels being passed to your module
+:::
+
+## Task 5
+::: {.center}
+🎯 Add a MultiQC step to finish your pipeline. The MultiQC report should contain a summary of all the FastQC reports for each sequence.
+
+💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!
+:::
 
 ## Common headaches!
 

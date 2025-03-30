@@ -426,13 +426,62 @@ Charlotte Capitanchik, PhD
 <li><p>nf-test (recommend installing with conda/mamba)</p></li>
 </ul>
 </section>
-<section id="choose-your-own-adventure" class="slide level2">
+<section id="choose-your-own-adventure" class="slide level2 smaller">
 <h2>Choose your own adventure! ⚔️</h2>
+<p>All documents/code for this workshop is at <code>github.com/iraiosub/nextflow_in_action</code>.</p>
+<p>The lecture is in <code>docs/Lecture.qmd.</code></p>
+<p>Choose what environment you will work with today:</p>
 <ol type="1">
-<li><p>CREATE</p></li>
-<li><p>Your laptop</p></li>
-<li><p>(Last resort) Gitpod Codespace</p></li>
+<li>CREATE - instructions in <code>docs/CREATE_setup.md</code></li>
+<li>Your laptop - we recommend downloading Dockerhub and using docker (ensure Dockerhub is running whenever you want to use it) and then using conda/mamba to install everything else: <code>mamba create -n nf -c conda-forge -c bioconda nextflow nf-core nf-test</code></li>
+<li>(Last resort) Gitpod Codespace</li>
 </ol>
+</section>
+<section id="getting-the-code" class="slide level2 smaller">
+<h2>Getting the code</h2>
+<ul>
+<li>You will need to fork our Github repo <code>github.com/iraiosub/nextflow_in_action</code></li>
+<li>Uncheck the box that only forks the main branch.</li>
+<li>If you are working on CREATE or locally, clone the repo.</li>
+<li>Checkout branch <code>1</code> to get started</li>
+</ul>
+
+<img data-src="Lecture_files/imgs/github_forking.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Borrowed from https://biostats-r.github.io/biostats/github/3_Fork_Tutorial.html</p></section>
+<section id="task-1" class="slide level2">
+<h2>Task 1</h2>
+<div class="center">
+<p>🎯 Add a FASTQC step using nf-core tools</p>
+<p>💡 Hint: To run the pipeline `nextflow run main.nf</p>
+</div>
+</section>
+<section id="task-2" class="slide level2">
+<h2>Task 2</h2>
+<div class="center">
+<p>🎯 Write your own module to calculate sequence length and add it to the pipeline</p>
+<p>💡 Hint: Look in the bin folder</p>
+</div>
+</section>
+<section id="task-3" class="slide level2">
+<h2>Task 3</h2>
+<div class="center">
+<p>🎯 Write a module to reverse complement the sequences</p>
+<p>🎯 Add a parameter to make the reverse complement step optional</p>
+</div>
+</section>
+<section id="task-4" class="slide level2">
+<h2>Task 4</h2>
+<div class="center">
+<p>🎯 Write a module to calculate the mean GC content of the sequences</p>
+<p>🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sequence and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.</p>
+<p>💡 Hint: You will need to manipulate the channels being passed to your module</p>
+</div>
+</section>
+<section id="task-5" class="slide level2">
+<h2>Task 5</h2>
+<div class="center">
+<p>🎯 Add a MultiQC step to finish your pipeline. The MultiQC report should contain a summary of all the FastQC reports for each sequence.</p>
+<p>💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!</p>
+</div>
 </section>
 <section id="common-headaches" class="slide level2">
 <h2>Common headaches!</h2>
