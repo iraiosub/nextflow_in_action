@@ -9,6 +9,6 @@ process MEAN_GC_CONTENT {
 
     script:
     """
-    mean_gc_content.sh ${group_key} ${sequences} > ${group_key}.mean_gc_content.tsv
+    mean_dinucleotide_content.sh ${group_key} gc ${sequences} > ${group_key}.mean_gc_content.tsv
     """
 }
