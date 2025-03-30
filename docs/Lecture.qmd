@@ -149,6 +149,14 @@ Choose what environment you will work with today:
 💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!
 :::
 
+## Task 6
+::: {.center}
+🎯 Use `ext.args` to generalise your GC content module so that you can also calculate AT content. Use `conf/modules.config` to set the `ext.args` for each time you import the module. 
+
+💡 Hint: Look at the nf-core FastQC module to see how `ext.args` is used
+💡 Hint: Remember to import `modules.config` in `nextflow.config`
+:::
+
 ## Common headaches
 
 -   Config hierarchies! You can convince yourself of this by messing around with where you set your `params.reverse_complement`...
