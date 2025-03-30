@@ -156,7 +156,13 @@ Choose what environment you will work with today:
 💡 Hint: Look at the nf-core FastQC module to see how `ext.args` is used
 💡 Hint: Remember to import `modules.config` in `nextflow.config`
 :::
+## Task 7
+::: {.center}
+🎯 Let's add tests to our pipeline with nf-test
 
+💡 Hint: We will follow Seqera's nf-test training together: `https://training.nextflow.io/2.1.4/side_quests/nf-test/#10-initialize-nf-test`
+
+:::
 ## Common headaches
 
 -   Config hierarchies! You can convince yourself of this by messing around with where you set your `params.reverse_complement`...
