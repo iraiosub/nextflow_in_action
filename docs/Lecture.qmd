@@ -187,6 +187,8 @@ Channel
 🎯 Add a FastQC step using nf-core tools
 
 💡 Hint: To run the pipeline `nextflow run main.nf -profile ...`
+
+💡 Hint: Want to rerun your pipeline **without starting over**? Just add `-resume` and pick up where you left off!
 :::
 
 ## Task 1: nf-core modules to the rescue!
