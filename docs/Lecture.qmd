@@ -267,6 +267,14 @@ sequence_length.sh input.tsv output.tsv
 💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!
 :::
 
+## 'Task 5' 2: A good day to 'Task 5'
+
+::: center
+🎯 Wow, MultiQC sure has a lot of useless inputs - let's edit the module to get rid of some of those. But what if you want to update the module from nf-core, won't that cause problems?
+
+💡 We will show you how to use `nf-core modules patch` and `nf-core modules update` to solve this!
+:::
+
 ## Task 6
 
 ::: center
