@@ -96,7 +96,7 @@ You will need:
 
 All documents/code for this workshop: `github.com/iraiosub/nextflow_in_action`.
 
-Lecture slides: in `docs/Lecture.qmd.`
+Lecture slides: `docs/Lecture.qmd.`
 
 Choose what environment you will work with today:
 
@@ -193,6 +193,8 @@ Channel
 
 ::: center
 🎯 Add a FastQC step using nf-core tools
+
+![](Lecture_files/imgs/nfcore_tools.png){fig-align="center" width="500px"}
 
 `nf-core modules install fastqc`
 :::
