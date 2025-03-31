@@ -625,7 +625,7 @@ Charlotte Capitanchik, PhD
 <div class="center">
 <p>🎯 Write a module to calculate the mean GC content of the sequences</p>
 <p>🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sample and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.</p>
-<p>💡 Hint: You will need to manipulate the channels being passed to your module. You can view your channel structure using view(), e.g.&nbsp;<code>EXTRACT_SEQUENCE.out.sequence.view { println "Sequence channel structure: $it" }</code></p>
+<p>💡 Hint: You will need to manipulate the channels being passed to your module. You can view your channel structure using view(), e.g.&nbsp;<code>ch_sequences.view {println "Sequence channel structure: $it" }</code></p>
 </div>
 </section>
 <section id="task-4-taming-the-data-stream" class="slide level2">
@@ -650,6 +650,13 @@ Charlotte Capitanchik, PhD
 <div class="center">
 <p>🎯 Add a MultiQC step to finish your pipeline. The MultiQC report should contain a summary of all the FastQC reports for each sequence.</p>
 <p>💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!</p>
+</div>
+</section>
+<section id="task-5-2-a-good-day-to-task-5" class="slide level2">
+<h2>‘Task 5’ 2: A good day to ‘Task 5’</h2>
+<div class="center">
+<p>🎯 Wow, MultiQC sure has a lot of useless inputs - let’s edit the module to get rid of some of those. But what if you want to update the module from nf-core, won’t that cause problems?</p>
+<p>💡 We will show you how to use <code>nf-core modules patch</code> and <code>nf-core modules update</code> to solve this!</p>
 </div>
 </section>
 <section id="task-6" class="slide level2">
