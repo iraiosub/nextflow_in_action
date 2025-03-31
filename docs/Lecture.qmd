@@ -283,13 +283,6 @@ sequence_length.sh input.tsv output.tsv
 💡 Hint: Look at the nf-core FastQC module to see how `ext.args` is used 💡 Hint: Remember to import `modules.config` in `nextflow.config`
 :::
 
-## Task 7
-
-::: center
-🎯 Let's add tests to our pipeline with nf-test
-
-💡 Hint: We will follow Seqera's nf-test training together: `https://training.nextflow.io/2.1.4/side_quests/nf-test/#10-initialize-nf-test`
-:::
 
 ## Common headaches
 
@@ -311,4 +304,12 @@ sequence_length.sh input.tsv output.tsv
 -   VSCode Nextflow plugin
 -   nf-core/bytesize on YouTube
 -   Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid
+:::
+
+## Well done you made it to Task 7 🎉
+
+::: center
+🎯 Let's add tests to our pipeline with nf-test
+
+💡 Hint: We will follow Seqera's nf-test training together: `https://training.nextflow.io/2.1.4/side_quests/nf-test/#10-initialize-nf-test`
 :::
