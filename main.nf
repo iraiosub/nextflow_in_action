@@ -50,17 +50,17 @@ workflow {
     //
     SEQUENCE_LENGTH(EXTRACT_SEQUENCE.out.sequence)
 
-    //
-    // Reverse-complement the sequence if option is enabled
-    //
+    ch_sequences = EXTRACT_SEQUENCE.out.sequence
      if (params.reverse_complement) {
-        REVERSE_COMPLEMENT(EXTRACT_SEQUENCE.out.sequence)
-     }
+        REVERSE_COMPLEMENT(ch_sequences)
+        ch_sequences = REVERSE_COMPLEMENT.out.reverse_complement
+     } 
 
+    // ch_sequences.view()
     //
     // Create a channel for calculating GC content by grouping sequences by id
     //
-    grouped_sequences_by_id = EXTRACT_SEQUENCE.out.sequence
+    grouped_sequences_by_id = ch_sequences
         // Restructure each item in the channel:
         // From: [meta (map containing id), seq]
         // To:   [id (extracted from meta), seq]
@@ -75,7 +75,7 @@ workflow {
     //
     // Create a channel for calculating GC content by grouping sequences by org
     //
-    grouped_sequences_by_org = EXTRACT_SEQUENCE.out.sequence
+    grouped_sequences_by_org = ch_sequences
         .map { meta, seq -> [meta.org, seq] }
         .groupTuple(by: [0])
 
