@@ -91,23 +91,23 @@ workflow {
     //
     // Prepare input channel for MultiQC
     //
-     ch_fastqc = FASTQC.out.zip
-         .map { it[1] }
-         .collect()
+    ch_fastqc = FASTQC.out.zip
+        .map { it[1] }
+        .collect()
 
-     ch_multiqc_files = ch_fastqc.mix(ch_multiqc_files)
-     // ch_multiqc_files.view { println "MultiQC input: $it" }
+    ch_multiqc_files = ch_fastqc.mix(ch_multiqc_files)
+    // ch_multiqc_files.view { println "MultiQC input: $it" }
 
-     //
-     // Call MultiQC with minimal inputs
-     //
-     MULTIQC (
-         ch_multiqc_files,  // This cannot be an empty list
-         [],  // multiqc_config
-         [],  // extra_multiqc_config
-         [],  // multiqc_logo
-         [],  // replace_names
-         []   // sample_names
-     )
+    //
+    // Call MultiQC with minimal inputs
+    //
+    MULTIQC (
+        ch_multiqc_files,  // This cannot be an empty list
+        [],  // multiqc_config
+        [],  // extra_multiqc_config
+        [],  // multiqc_logo
+        [],  // replace_names
+        []   // sample_names
+    )
 
 }
