@@ -22,7 +22,11 @@ In this workshop you will learn:
 - How to implement logic switches in your pipeline.
 - How to implement unit tests with [nf-test](https://www.nf-test.com/).
 - An appreciation of when writing a workflow might be a good idea, and how layers of additional complexity can make your workflow more flexible and robust.
+  
 ## Getting Started
+
+Everything you need is in the `docs/Lecture.html` slides on the `main` branch. The lecture walks you through a series of tasks to build a toy pipeline. The solutions to the tasks are in sequentially numbered branches. 
+
 ## Authors
 
 - [Ira Iosub, PhD](https://www.github.com/iraiosub) ira.iosub@crick.ac.uk
