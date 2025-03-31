@@ -230,7 +230,7 @@ sequence_length.sh input.tsv output.tsv
 
 🎯 Use the same module twice in your pipeline. First, to calculate the mean GC content of each individual sample and then secondly, to calculate the mean GC content of sequences belonging to each organism/species.
 
-💡 Hint: You will need to manipulate the channels being passed to your module
+💡 Hint: You will need to manipulate the channels being passed to your module. You can view your channel structure using view(), e.g. `EXTRACT_SEQUENCE.out.sequence.view { println "Sequence channel structure: $it" }`
 :::
 
 ## Task 4: taming the data stream
