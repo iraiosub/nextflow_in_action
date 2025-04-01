@@ -49,9 +49,9 @@ workflow {
     //
     // Reverse-complement the sequence if option is enabled
     //
-     if (params.reverse_complement) {
+    if (params.reverse_complement) {
         REVERSE_COMPLEMENT(EXTRACT_SEQUENCE.out.sequence)
-     }
+    }
 
 
 }
