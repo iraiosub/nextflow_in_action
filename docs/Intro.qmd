@@ -1,0 +1,110 @@
+---
+title: "<span style='font-size: 0.8em; color: #3ac486;'>Nextflow in Action: Design and Implement Your Own Bioinformatics Workflows</span>"
+author:
+  - name: "Charlotte Capitanchik, PhD"
+    affiliation: "Francis Crick Institute/KCL"
+  - name: "Ira Iosub, PhD"
+    affiliation: "Francis Crick Institute/KCL"
+date: "June 2, 2025"
+format:
+  revealjs:
+    theme: dark
+    code-fold: true
+    code-line-numbers: false
+    highlight-style: github
+    include-in-header:
+      text: |
+        <style>
+        .reveal {
+          font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        }
+        .reveal h1, 
+        .reveal h2, 
+        .reveal h3, 
+        .reveal h4, 
+        .reveal h5, 
+        .reveal h6 {
+          font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        }
+        .figure-caption, 
+        figcaption, 
+        .caption, 
+        .figure p {
+          font-size: 0.5em !important;
+        }
+        .reveal .title {
+          margin-bottom: 1em;
+        }
+        </style>
+editor: visual
+output: 
+    revealjs::revealjs_presentation:
+        css: styles.css
+---
+
+A pipeline or workflow connects multiple programs together to analyse data.
+
+::: {.figure .center}
+![Wratten,Wilm & Goeke (2021), *Nature Methods*](Intro_files/imgs/fig1_goeke_workflow_Review.png){width="75%"}
+:::
+
+------------------------------------------------------------------------
+
+## Nextflow or Snakemake?
+
+::: {.figure .center}
+![Djaffardjy et al., (2023), *Computational and Structural Biotechnology Journal*](Intro_files/imgs/monthly_snakemake_nextflow_repos.jpg){width="75%"}
+:::
+
+## Why Nextflow?
+
+::: columns
+::: {.column width="40%"}
+-   [nf-core]{style="color: #3ac486;"} community project:
+    -   127 pipelines
+    -   1443 modules
+    -   Slack workspace with 11,642 members
+-   GUIs such as Seqera platform, flow.bio
+:::
+
+::: {.column width="60%"}
+![Organisations using nf-core as of March 2025](Intro_files/imgs/nfcore_map.png){width="100%"}
+:::
+:::
+
+## When to write a Nextflow pipeline?
+
+![](Intro_files/imgs/whenToNextflow.png){fig-align="center"}
+
+## Let's dive into Nextflow together: Set up
+
+You will need:
+
+-   Nextflow
+
+-   A container engine (Docker/Singularity/Apptainer)
+
+Today, we are providing a training environment in GitHub Codespaces with all dependencies pre-installed. You will need a GitHub account.
+
+## Let's dive into Nextflow together ⚔️
+
+Open in 2 separate tabs:
+
+-   All documentation for this workshop: <https://training.nextflow.io/2.1.2/hello_nextflow/>
+
+-   Training environment: <https://codespaces.new/nextflow-io/training?quickstart=1&ref=2.1.2>
+
+## Important resources
+
+::: {.cell style="font-size: 60%;"}
+-   Nextflow and nf-core docs: <https://www.nextflow.io/docs/latest/index.html> and <https://nf-co.re/docs/>
+-   Nextflow training: <https://training.nextflow.io/>
+-   Forum for Nextflow questions: <https://community.seqera.io/>
+-   nf-core Slack workspace: <https://nf-co.re/join/slack>
+-   Seqera AI: <https://seqera.io/ask-ai/chat>
+-   VSCode Nextflow integration: <https://nextflow.io/docs/latest/vscode.html>
+-   nf-core/bytesize on YouTube: <https://nf-co.re/events/bytesize>
+-   Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid
+-   Our intermediate-level Nextflow workshop: <https://github.com/iraiosub/nextflow_in_action>
+-   Seqera's nf-test training: <https://training.nextflow.io/2.1.4/side_quests/nf-test/#10-initialize-nf-test>
+:::
