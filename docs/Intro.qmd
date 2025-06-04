@@ -90,9 +90,9 @@ Today, we are providing a training environment in GitHub Codespaces with all dep
 
 Open in 2 separate tabs:
 
--   All documentation for this workshop: <https://training.nextflow.io/2.1.2/hello_nextflow/>
+-   All documentation for this workshop: <https://training.nextflow.io/2.1.7/hello_nextflow/>
 
--   Training environment: <https://codespaces.new/nextflow-io/training?quickstart=1&ref=2.1.2>
+-   Training environment: <https://codespaces.new/nextflow-io/training?quickstart=1&ref=2.1.7>
 
 ## Important resources
 
