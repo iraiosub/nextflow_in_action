@@ -15,6 +15,8 @@ We assume some minimal exposure to GitHub and Nextflow. To get the most out of t
 
 In terms of software/hardware requirements, everything can be run locally on your laptop or on HPC as you prefer. You will need Nextflow and nf-core tools installed and a container engine such as Docker or Singularity.
 
+If instead you are using GitHub codespaces (see below), a workspace with all required dependencies is provided, so there is no need to manage dependecies yourself. Please note, there is limited quota for free usage of GitHub codepaces.
+
 ## Learning Outcomes
 In this workshop you will learn:
 - How to compose a bioinformatics workflow in Nextflow using a combination of writing your own modules and utilising the incredible [nf-core modules](https://nf-co.re/modules/) resource.
@@ -31,9 +33,11 @@ Everything you need is in the `docs/Lecture.html` slides on the `main` branch. T
 
 The best way to make the most of the workshop is to fork this repo and clone it locally. This way, you can follow along and code on your own copy.
 
+Alternatively, you can use GitHub codespaces. Fork this repo, then go to your fork on github.com, switch to branch `1`, click "code" then go to "Codespaces" tab and click `Create codespace on 1`. The wait for the workspace to build. It will open as a VScode session in your browser, and all he dependencies will be installed - it make take a few minutes.
+
 ### Steps:
 1. **Fork the Repository**:
-   - Navigate to the repo on GitHub and click the **Fork** button in the top-right corner to create a copy in your GitHub account. Make sure to fork all branches, not just the main.
+   - Navigate to the repo on GitHub and click the **Fork** button in the top-right corner to create a copy in your GitHub account.
 
 2. **Clone the Repository Locally**:
    - Go to your forked repo and click the **Code** button.
