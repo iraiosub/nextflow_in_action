@@ -33,8 +33,6 @@ Everything you need is in the `docs/Lecture.html` slides on the `main` branch. T
 
 The best way to make the most of the workshop is to fork this repo and clone it locally. This way, you can follow along and code on your own copy.
 
-Alternatively, you can use GitHub codespaces. Fork this repo, then go to your fork on github.com, switch to branch `1`, click "code" then go to "Codespaces" tab and click `Create codespace on 1`. The wait for the workspace to build. It will open as a VScode session in your browser, and all he dependencies will be installed - it make take a few minutes.
-
 ### Steps:
 1. **Fork the Repository**:
    - Navigate to the repo on GitHub and click the **Fork** button in the top-right corner to create a copy in your GitHub account.
@@ -63,6 +61,8 @@ Alternatively, you can use GitHub codespaces. Fork this repo, then go to your fo
      ```bash
      git checkout 1
      ```
+
+Alternatively, you can use GitHub codespaces. Fork this repo, then go to your fork on github.com, switch to branch `1`, click "code" then go to "Codespaces" tab and click `Create codespace on 1`. The wait for the workspace to build. It will open as a VScode session in your browser, and all he dependencies will be installed - it may take a few minutes.
 
 ## Independent Study
 
