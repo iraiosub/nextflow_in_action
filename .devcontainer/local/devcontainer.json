@@ -1,0 +1,23 @@
+{
+    "name": "nextflow-training-local",
+    "image": "ghcr.io/nextflow-io/training:2.1.4",
+
+    "remoteUser": "root",
+    "privileged": true,
+
+    "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,consistency=cached",
+    "workspaceFolder": "${localWorkspaceFolder}",
+
+    "remoteEnv": {
+        "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+        "NXF_VER": "25.10.2"
+    },
+
+    "onCreateCommand": "./.devcontainer/local/setup.sh",
+
+    "hostRequirements": {
+        "cpus": 4,
+        "memory": "8gb",
+        "storage": "16gb"
+    }
+}
