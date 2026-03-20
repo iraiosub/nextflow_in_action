@@ -63,7 +63,10 @@ The best way to make the most of the workshop is to fork this repo and clone it 
      git checkout 1
      ```
 
-Alternatively, you can use GitHub codespaces. Fork this repo, then go to your fork on github.com, switch to branch `1`, click "code" then go to "Codespaces" tab and click `Create codespace on 1`. The wait for the workspace to build. It will open as a VScode session in your browser, and all he dependencies will be installed - it may take a few minutes.
+- If you want to work using the devcontainer in VSCode (thus bypassing the need to install dependencies yourself), click `Cmd+Shift+P` then run `Dev Containers: Reopen in Containers` and select `nextflow-training-local`. Ensure Docker is running before running this. The build will take a few minutes.
+
+
+- If you don't want to work locally, you can use GitHub codespaces. Fork this repo, then go to your fork on github.com, switch to branch `1`, click "code" then go to "Codespaces" tab and click `Create codespace on 1`. The wait for the workspace to build. It will open as a VSCode session in your browser, and all he dependencies will be installed - it may take a few minutes.
 
 ## Independent Study
 

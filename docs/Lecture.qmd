@@ -102,8 +102,8 @@ Lecture slides: `docs/Lecture.qmd.`
 
 Choose what environment you will work with today:
 
-1.  GitHub Codespaces
-2.  Your laptop - we recommend downloading Docker (ensure Dockerhub is running whenever you want to use it) and then using conda/mamba to install everything else: `mamba create -n nf -c conda-forge -c bioconda nf-core=3.5.1`
+1.  GitHub Codespaces - zero effort
+2.  Your laptop - we recommend downloading Docker (ensure Dockerhub is running whenever you want to use it) and then using either the devcontainer (JSON in the repo) OR conda/mamba to install dependencies: `mamba create -n nf -c conda-forge -c bioconda nf-core=3.5.1`
 3.  CREATE - instructions in `docs/CREATE_setup.md`
 
 ## Getting the code {.smaller}
