@@ -36,6 +36,7 @@ The best way to make the most of the workshop is to fork this repo and clone it 
 ### Steps:
 1. **Fork the Repository**:
    - Navigate to the repo on GitHub and click the **Fork** button in the top-right corner to create a copy in your GitHub account.
+   - Uncheck the box that only forks the main branch.
 
 2. **Clone the Repository Locally**:
    - Go to your forked repo and click the **Code** button.

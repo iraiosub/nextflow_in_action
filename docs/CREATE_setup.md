@@ -13,7 +13,7 @@ Anaconda is available via module load. If you prefer to manage your own conda/ma
 Following these instructions mamba and all your envs will be available to you on the compute nodes.
 
 ### Using Nextflow
--   Make a mamba environment for Nextflow runs: `mamba create -n nf -c conda-forge -c bioconda nextflow nf-core nf-test`
+-   Make a mamba environment for Nextflow runs: `mamba create -n nf -c conda-forge -c bioconda nf-core=3.5.1` # This will also install Nextflow and nf-test
 -   Note on KCL CREATE singularity is only available on compute nodes, so you **must** run your pipeline with sbatch or from within an interactive job ie. `srun -p cpu --pty /bin/bash` followed by `mamba activate nf`
 -   In the activated environment you can run Nextflow pipelines, test it out by running the test RNA-Seq data: `nextflow run nf-core/rnaseq -c create.config -profile test,singularity --outdir .`
 -   Check that Nextflow is correctly sending jobs to slurm by looking at your submitted jobs in the queue `squeue -u k123467` replace with your k number.

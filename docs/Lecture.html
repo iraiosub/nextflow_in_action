@@ -12,7 +12,7 @@
 
   <meta name="author" content="Ira Iosub, PhD">
   <meta name="author" content="Charlotte Capitanchik, PhD">
-  <meta name="dcterms.date" content="2025-03-31">
+  <meta name="dcterms.date" content="2026-03-24">
   <title>Nextflow in Action: Design and Implement Your Own Bioinformatics Workflows</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -436,7 +436,7 @@ Charlotte Capitanchik, PhD
     </div>
 </div>
 
-  <p class="date">2025-03-31</p>
+  <p class="date">2026-03-24</p>
 </section>
 <section class="slide level2">
 
@@ -468,9 +468,9 @@ Charlotte Capitanchik, PhD
 <ul>
 <li><span style="color: #3ac486;">nf-core</span> community project:
 <ul>
-<li>127 pipelines</li>
-<li>1443 modules</li>
-<li>Slack workspace with 11,642 members</li>
+<li>145 pipelines</li>
+<li>1764 modules</li>
+<li>Slack workspace with 14,120 members</li>
 </ul></li>
 <li>GUIs such as Seqera platform, flow.bio</li>
 </ul>
@@ -478,7 +478,7 @@ Charlotte Capitanchik, PhD
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="Lecture_files/imgs/nfcore_map.png" style="width:100.0%"></p>
-<figcaption>Organisations using nf-core as of March 2025</figcaption>
+<figcaption>Organisations using nf-core as of March 2026</figcaption>
 </figure>
 </div>
 </div>
@@ -496,10 +496,11 @@ Charlotte Capitanchik, PhD
 <h2>Set up</h2>
 <p>You will need:</p>
 <ul>
-<li><p>Nextflow</p></li>
+<li><p>Nextflow (25.10.2 - 25.10.4)</p></li>
 <li><p>A container engine (Docker/Singularity/Apptainer)</p></li>
-<li><p>nf-core (recommend installing with conda/mamba)</p></li>
-<li><p>nf-test (recommend installing with conda/mamba)</p></li>
+<li><p>nf-core tools (3.2.0 - 3.5.1)</p></li>
+<li><p>nf-test (0.9.2 - 0.9.5)</p></li>
+<li><p>Code editor (VSCode)</p></li>
 </ul>
 </section>
 <section id="choose-your-own-adventure" class="slide level2 smaller">
@@ -508,9 +509,9 @@ Charlotte Capitanchik, PhD
 <p>Lecture slides: <code>docs/Lecture.qmd.</code></p>
 <p>Choose what environment you will work with today:</p>
 <ol type="1">
+<li>GitHub Codespaces</li>
+<li>Your laptop - we recommend downloading Docker (ensure Dockerhub is running whenever you want to use it) and then using conda/mamba to install everything else: <code>mamba create -n nf -c conda-forge -c bioconda nf-core=3.5.1</code></li>
 <li>CREATE - instructions in <code>docs/CREATE_setup.md</code></li>
-<li>Your laptop - we recommend downloading Dockerhub and using docker (ensure Dockerhub is running whenever you want to use it) and then using conda/mamba to install everything else: <code>mamba create -n nf -c conda-forge -c bioconda nextflow nf-core nf-test</code></li>
-<li>(Last resort) GitHub Codespace</li>
 </ol>
 </section>
 <section id="getting-the-code" class="slide level2 smaller">
@@ -518,8 +519,9 @@ Charlotte Capitanchik, PhD
 <ul>
 <li>Fork our GitHub repo <code>github.com/iraiosub/nextflow_in_action</code></li>
 <li>Uncheck the box that only forks the main branch.</li>
+<li>If you are working on GitHub codespaces, switch to branch <code>1</code>, go to “Codespaces” tab and click <code>Create codespace on 1</code>.</li>
 <li>If you are working on CREATE or locally, clone the repo.</li>
-<li>Checkout branch <code>1</code> to get started</li>
+<li>Checkout branch <code>1</code> to get started.</li>
 </ul>
 
 <img data-src="Lecture_files/imgs/github_forking.png" style="width:70.0%" class="r-stretch quarto-figure-center"><p class="caption">Borrowed from https://biostats-r.github.io/biostats/github/3_Fork_Tutorial.html</p></section>
@@ -649,7 +651,7 @@ Charlotte Capitanchik, PhD
 <h2>Task 5</h2>
 <div class="center">
 <p>🎯 Add a MultiQC step to finish your pipeline. The MultiQC report should contain a summary of all the FastQC reports for each sequence.</p>
-<p>💡 Hint: MultiQC is an nf-core module. This will require some channel manipulation!</p>
+<p>💡 Hints: MultiQC is an nf-core module. This will require some channel manipulation!</p>
 </div>
 </section>
 <section id="task-5-2-a-good-day-to-task-5" class="slide level2">
@@ -687,7 +689,7 @@ Charlotte Capitanchik, PhD
 <li>Nextflow training: <code>https://training.nextflow.io/</code></li>
 <li>nf-core Slack workspace</li>
 <li>Forum for Nextflow questions: <code>https://community.seqera.io/</code></li>
-<li>Seqera AI</li>
+<li>Seqera AI <code>https://seqera.io/ask-ai/chat-v2</code></li>
 <li>VSCode Nextflow plugin</li>
 <li>nf-core/bytesize on YouTube</li>
 <li>Annual Nextflow Summit and hackathon in Barcelona, Boston and hybrid</li>
