@@ -1,5 +1,5 @@
 {
-    "name": "nfcore",
+    "name": "nextflow_in_action_local",
     "image": "ghcr.io/nextflow-io/training:2.1.4",
 
     "remoteUser": "root",
@@ -10,11 +10,11 @@
         "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
     },
 
-    "onCreateCommand": "./.devcontainer/setup.sh",
+    "onCreateCommand": "./.devcontainer/local/setup.sh",
 
     "hostRequirements": {
         "cpus": 4,
-        "memory": "16gb",
-        "storage": "32gb"
+        "memory": "8gb",
+        "storage": "16gb"
     }
 }
