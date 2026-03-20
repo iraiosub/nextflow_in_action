@@ -1,0 +1,23 @@
+{
+  "name": "nextflow-training-local",
+  "image": "ghcr.io/nextflow-io/training:2.1.4",
+  "workspaceFolder": "/workspaces/nextflow_in_action",
+  "remoteUser": "root",
+  "remoteEnv": {
+    "NXF_HOME": "/workspaces/.nextflow",
+    "NXF_EDGE": "0",
+    "NXF_VER": "25.10.2",
+    "HOST_PROJECT_PATH": "${localWorkspaceFolder}",
+    "SHELL": "/bin/bash"
+  },
+  "onCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": ["nf-core.nf-core-extensionpack"],
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/bin/python",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
