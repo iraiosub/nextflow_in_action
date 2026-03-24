@@ -39,7 +39,7 @@ workflow {
     //
     // Run FastQC on raw reads
     //
-    FASTQC(read_ch)
+    FASTQC(read_ch) 
 
     //
     // Get sequence lengths for each FASTQ file
